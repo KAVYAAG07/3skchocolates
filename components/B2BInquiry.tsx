@@ -1,8 +1,96 @@
+import React, { useState } from 'react';
+import { WHATSAPP_NUMBER } from '../data';
+
 export default function B2BInquiry() {
+  const [activeTab, setActiveTab] = useState<'overview' | 'services' | 'inquiry'>('overview');
+
+  const openWhatsApp = () => {
+    const phone = WHATSAPP_NUMBER.replace(/[^0-9]/g, '');
+    const text = encodeURIComponent('Hello, I would like to inquire about B2B / corporate orders.');
+    window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+  };
+
   return (
-    <section>
-      <h2>B2B & Corporate Inquiry</h2>
-      <p>Contact us for corporate and bulk chocolate orders.</p>
+    <section id="b2b-section" className="bg-dark-chocolate min-h-screen py-12 text-gray-100">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-8">
+          <h2 className="font-serif text-3xl font-extrabold text-gold-100">B2B & Corporate Services</h2>
+          <p className="text-gray-400 mt-2">We partner with hotels, cafes, retailers and corporate clients for bespoke supply and gifting.</p>
+        </div>
+
+        <div className="mb-6 flex gap-2 justify-center">
+          <button onClick={() => setActiveTab('overview')} className={`px-3 py-2 rounded ${activeTab === 'overview' ? 'bg-gold-700 text-dark-chocolate' : 'bg-cocoa-card text-gray-300'}`}>Overview</button>
+          <button onClick={() => setActiveTab('services')} className={`px-3 py-2 rounded ${activeTab === 'services' ? 'bg-gold-700 text-dark-chocolate' : 'bg-cocoa-card text-gray-300'}`}>Services</button>
+          <button onClick={() => setActiveTab('inquiry')} className={`px-3 py-2 rounded ${activeTab === 'inquiry' ? 'bg-gold-700 text-dark-chocolate' : 'bg-cocoa-card text-gray-300'}`}>Inquiry</button>
+        </div>
+
+        <div className="bg-cocoa-card rounded-xl p-6 border border-gold-900/10">
+          {activeTab === 'overview' && (
+            <div>
+              <h3 className="text-xl text-gold-100 font-bold mb-3">Commercial Accounts & Partnerships</h3>
+              <p className="text-gray-300 mb-4">Dedicated B2B support for hotels, cafes, corporate gifting and wholesale. Minimum bulk orders, custom pricing and logistics arranged.</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                <div className="p-4 bg-dark-chocolate/40 rounded">
+                  <h4 className="text-gold-200 font-semibold">Corporate Gifting</h4>
+                  <p className="text-gray-400 text-sm mt-1">Premium hampers and branded wrappers for client gifting and events.</p>
+                </div>
+                <div className="p-4 bg-dark-chocolate/40 rounded">
+                  <h4 className="text-gold-200 font-semibold">Cafe & Patisserie Supply</h4>
+                  <p className="text-gray-400 text-sm mt-1">High-quality ready-to-sell mini-bars for premium outlets and menus.</p>
+                </div>
+                <div className="p-4 bg-dark-chocolate/40 rounded">
+                  <h4 className="text-gold-200 font-semibold">Wholesale & Hospitality</h4>
+                  <p className="text-gray-400 text-sm mt-1">Volume orders, co-packing and logistical support for hotel and airline partners.</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'services' && (
+            <div>
+              <h3 className="text-xl text-gold-100 font-bold mb-3">Services & Deliverables</h3>
+              <ul className="list-disc list-inside text-gray-300 space-y-2">
+                <li>Customized wrapper design & digital proofs</li>
+                <li>Bulk pricing, sample approvals, and quality checks</li>
+                <li>Temperature-controlled packaging and fast logistics</li>
+              </ul>
+              <div className="mt-6 flex gap-3">
+                <button onClick={() => setActiveTab('inquiry')} className="bg-gold-600 px-4 py-2 rounded text-dark-chocolate font-bold">Request Quote</button>
+                <button onClick={openWhatsApp} className="border border-gold-700 px-4 py-2 rounded text-gold-200">Inquire via WhatsApp</button>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'inquiry' && (
+            <div>
+              <h3 className="text-xl text-gold-100 font-bold mb-3">Inquire Corporate Partnership</h3>
+              <p className="text-gray-300 mb-4">Fill the form below or message us directly on WhatsApp for a dedicated B2B quote within 4 hours.</p>
+
+              <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input placeholder="Company Name" className="w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200" />
+                <input placeholder="Contact Person" className="w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200" />
+                <input placeholder="Email" className="w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200" />
+                <input placeholder="WhatsApp / Phone" className="w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200" />
+                <select className="w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200">
+                  <option>Corporate Gifting & Hampers</option>
+                  <option>Cafe / Patisserie Supply</option>
+                  <option>Wholesale / Hospitality</option>
+                </select>
+                <select className="w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200">
+                  <option>100 - 500 bars</option>
+                  <option>500 - 2000 bars</option>
+                  <option>2000+ bars</option>
+                </select>
+                <textarea placeholder="Tell us about your requirements (optional)" className="md:col-span-2 w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200" />
+                <div className="md:col-span-2 flex gap-3 mt-2">
+                  <button type="button" className="bg-gold-600 px-5 py-3 rounded text-dark-chocolate font-bold">Submit Form Inquiry</button>
+                  <button type="button" onClick={openWhatsApp} className="border border-gold-700 px-5 py-3 rounded text-gold-200">Inquire via WhatsApp</button>
+                </div>
+              </form>
+            </div>
+          )}
+        </div>
+      </div>
     </section>
   );
 }
