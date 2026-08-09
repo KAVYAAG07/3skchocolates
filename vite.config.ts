@@ -4,7 +4,11 @@ import path from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
+  const base = '/3skchocolates/';
+
   return {
+    base,
+    plugins: [react(), tailwindcss()],
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
