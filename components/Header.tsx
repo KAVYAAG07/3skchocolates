@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Globe, Sparkles, MoreVertical, X } from 'lucide-react';
+import { Globe, Sparkles, MoreVertical, X } from 'lucide-react';
 import { IMAGE_PATHS } from '../data';
 
 interface HeaderProps {
@@ -85,14 +85,7 @@ export default function Header({ activeTab, setActiveTab, onOrderNow }: HeaderPr
           </nav>
 
           <div className="flex items-center gap-4 relative">
-            <button
-              onClick={() => { setActiveTab('shop'); if (typeof onOrderNow === 'function') onOrderNow(); }}
-              id="header-shop-cta"
-              className="flex items-center gap-2 bg-gradient-to-r from-gold-600 to-gold-500 text-dark-chocolate px-4 py-2.5 rounded text-xs md:text-sm font-bold tracking-wider hover:from-gold-500"
-            >
-              <ShoppingBag className="w-4 h-4" />
-              ORDER NOW
-            </button>
+            {/* ORDER NOW removed from header by request; Order CTA now lives in the shop/cart area below */}
 
             <div className="relative lg:hidden">
               <button
