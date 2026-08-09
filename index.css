@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cinzel", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-gold-50: #fbf6ec;
+  --color-gold-100: #f5eacf;
+  --color-gold-200: #ecd29b;
+  --color-gold-300: #e1b360;
+  --color-gold-400: #d69837;
+  --color-gold-500: #c5822b;
+  --color-gold-600: #a76520;
+  --color-gold-700: #814619;
+  --color-gold-800: #592f13;
+  --color-gold-900: #30170a;
+}
+
+@utility text-gold-gradient {
+  background: linear-gradient(135deg, #fff7e6 0%, #e8c57a 30%, #cfa14a 50%, #b8862b 75%, #fbe8af 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility bg-gold-gradient {
+  background: linear-gradient(135deg, #e8c57a 0%, #cfa14a 50%, #a67924 100%);
+}
+
+@utility bg-dark-chocolate {
+  background-color: #0c0806;
+}
+
+@utility bg-cocoa-card {
+  background-color: #140e0c;
+}
+
+@utility border-gold-glow {
+  border-color: rgba(207, 161, 74, 0.2);
+}
+
+@utility shadow-gold-glow {
+  box-shadow: 0 4px 20px -2px rgba(207, 161, 74, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0806;
+}
+::-webkit-scrollbar-thumb {
+  background: #231916;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a2a25;
+}
+
