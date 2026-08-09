@@ -117,9 +117,8 @@ export default function CustomWrapper() {
                 <div className="text-gray-500">Large Preview Panel</div>
               </div>
 
-              <div className="mt-6 flex gap-3">
-                <button onClick={openWhatsAppWithDesign} className="flex-1 bg-gold-600 px-4 py-3 rounded text-dark-chocolate font-bold">Submit design through WhatsApp</button>
-                <button className="flex-1 border border-gold-700 text-gold-200 px-4 py-3 rounded">Request Quote</button>
+              <div className="mt-6">
+                <button onClick={openWhatsAppWithDesign} className="w-full bg-gold-600 px-4 py-3 rounded text-dark-chocolate font-bold">Submit design through WhatsApp</button>
               </div>
             </div>
           </div>
