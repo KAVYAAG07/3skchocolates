@@ -6,7 +6,8 @@ export default function B2BInquiry() {
 
   const openWhatsApp = () => {
     const phone = WHATSAPP_NUMBER.replace(/[^0-9]/g, '');
-    const text = encodeURIComponent('Hello, I would like to inquire about B2B / corporate orders.');
+    const text = encodeURIComponent(
+      'Hello, I would like to enquire about B2B / corporate orders.\nCompany: \nContact person: \nWhatsApp / Phone: \nEstimated monthly volume: '\n    );
     window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
   };
 
@@ -55,7 +56,7 @@ export default function B2BInquiry() {
                 <li>Temperature-controlled packaging and fast logistics</li>
               </ul>
               <div className="mt-6 flex gap-3">
-                <button onClick={() => setActiveTab('inquiry')} className="bg-gold-600 px-4 py-2 rounded text-dark-chocolate font-bold">Request Quote</button>
+                <button onClick={() => setActiveTab('inquiry')} className="bg-gold-600 px-4 py-2 rounded text-dark-chocolate font-bold">Proceed to Inquiry</button>
                 <button onClick={openWhatsApp} className="border border-gold-700 px-4 py-2 rounded text-gold-200">Inquire via WhatsApp</button>
               </div>
             </div>
@@ -64,29 +65,11 @@ export default function B2BInquiry() {
           {activeTab === 'inquiry' && (
             <div>
               <h3 className="text-xl text-gold-100 font-bold mb-3">Inquire Corporate Partnership</h3>
-              <p className="text-gray-300 mb-4">Fill the form below or message us directly on WhatsApp for a dedicated B2B quote within 4 hours.</p>
+              <p className="text-gray-300 mb-4">To request a dedicated B2B quote, please message us on WhatsApp and include your company details and estimated monthly volume. We will respond within 4 hours.</p>
 
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input placeholder="Company Name" className="w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200" />
-                <input placeholder="Contact Person" className="w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200" />
-                <input placeholder="Email" className="w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200" />
-                <input placeholder="WhatsApp / Phone" className="w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200" />
-                <select className="w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200">
-                  <option>Corporate Gifting & Hampers</option>
-                  <option>Cafe / Patisserie Supply</option>
-                  <option>Wholesale / Hospitality</option>
-                </select>
-                <select className="w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200">
-                  <option>100 - 500 bars</option>
-                  <option>500 - 2000 bars</option>
-                  <option>2000+ bars</option>
-                </select>
-                <textarea placeholder="Tell us about your requirements (optional)" className="md:col-span-2 w-full rounded px-3 py-2 bg-dark-chocolate border border-gold-900/10 text-gray-200" />
-                <div className="md:col-span-2 flex gap-3 mt-2">
-                  <button type="button" className="bg-gold-600 px-5 py-3 rounded text-dark-chocolate font-bold">Submit Form Inquiry</button>
-                  <button type="button" onClick={openWhatsApp} className="border border-gold-700 px-5 py-3 rounded text-gold-200">Inquire via WhatsApp</button>
-                </div>
-              </form>
+              <div className="flex items-center gap-3 mt-2">
+                <button type="button" onClick={openWhatsApp} className="w-full border border-gold-700 px-5 py-3 rounded text-gold-200">Enquire via WhatsApp</button>
+              </div>
             </div>
           )}
         </div>
