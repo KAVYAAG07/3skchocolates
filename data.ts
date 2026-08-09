@@ -4,7 +4,7 @@ import pistachioSizes from "./assets/images/pistachio_sizes_new_1785488478959.jp
 import hazelnutKunafa from "./assets/images/hazelnut_kunafa_1783853175537.jpg";
 import logo3sk from "./assets/images/logo_3sk_1783869391019.jpg";
 import pistachioKunafaGallery from "./assets/images/pistachio_kunafa_gallery_1783946698595.jpg";
-import hazelnutKunafaPureImg from './assets/images/hazelnut_kunafa_gallery_1783946496085.jpg';
+import hazelnutKunafaGallery from "./assets/images/hazelnut_kunafa_gallery_1783946496085.jpg";
 
 export const WHATSAPP_NUMBER = '917296937881';
 
