@@ -9,14 +9,14 @@ import hazelnutKunafaGallery from "./assets/images/hazelnut_kunafa_gallery_17839
 export const WHATSAPP_NUMBER = '917296937881';
 
 export const IMAGE_PATHS = {
-  hero: heroImg,
-  pistachio: pistachioKunafaPureImg,
-  hazelnut: hazelnutKunafaPureImg,
-  pistachioSizeChart: pistachioSizeChartImg,
-  hazelnutSizeChart: hazelnutSizeChartImg,
-  logo: logoImg,
-  pistachioPure: pistachioKunafaPureImg,
-  hazelnutPure: hazelnutKunafaPureImg
+  hero: heroChocolate,
+  pistachio: pistachioKunafaGallery,
+  hazelnut: hazelnutKunafaGallery,
+  pistachioSizeChart: pistachioSizes,
+  hazelnutSizeChart: pistachioSizes,
+  logo: logo3sk,
+  pistachioPure: pistachioKunafaGallery,
+  hazelnutPure: hazelnutKunafaGallery
 };
 
 export const SIZES_DATA = [
@@ -32,7 +32,7 @@ export const CHOCOLATE_PRODUCTS: ChocolateProduct[] = [
     name: '3SK Pistachio Kunafa Chocolate',
     flavour: 'pistachio',
     description: 'The Original Dubai Sensation: Crispy toasted kunafa pastry shredded and mixed with premium pistachio butter, encased in rich, silky milk chocolate.',
-    longDescription: 'A masterpiece of textures and flavours. Our signature bar combines the crispy, golden crunch of toasted kunafa pastry with the rich, nutty creaminess of 100% pure pistachio butter. Wrapped in a premium smooth milk chocolate shell, this is the authentic, globally celebrated taste experience in a luxury bar.',
+    longDescription: 'A masterpiece of textures and flavours. Our signature bar combines the crispy, golden crunch of toasted kunafa pastry with the rich, nutty creaminess of 100% pure pistachio b[...]',
     image: IMAGE_PATHS.pistachio,
     accentColor: 'emerald',
     sizes: SIZES_DATA
@@ -42,7 +42,7 @@ export const CHOCOLATE_PRODUCTS: ChocolateProduct[] = [
     name: '3SK Hazelnut Kunafa Chocolate',
     flavour: 'hazelnut',
     description: 'Crispy toasted kunafa pastry combined with rich, creamy hazelnut filling, enrobed in our signature premium smooth milk chocolate.',
-    longDescription: 'For the lovers of rich, chocolatey hazelnut spreads. We fold our perfectly golden, crispy kunafa pastry threads into a velvety, decadent hazelnut cream, then lock it inside our premium milk chocolate bar. Every bite offers a majestic contrast between the crackle of pastry and the smoothness of hazelnuts.',
+    longDescription: 'For the lovers of rich, chocolatey hazelnut spreads. We fold our perfectly golden, crispy kunafa pastry threads into a velvety, decadent hazelnut cream, then lock it inside o[...]',
     image: IMAGE_PATHS.hazelnut,
     accentColor: 'amber',
     sizes: SIZES_DATA
