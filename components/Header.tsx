@@ -29,7 +29,7 @@ export default function Header({ activeTab, setActiveTab, onOrderNow }: HeaderPr
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 60);
-      if (typeof onOrderNow === 'function') onOrderNow();
+      // removed automatic opening of Order Modal triggered by header click
     }
   };
 
