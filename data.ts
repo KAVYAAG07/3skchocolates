@@ -1,5 +1,5 @@
 import { ChocolateProduct } from './types';
-import heroImg from './assets/images/hero_chocolate_1783853146302.jpg';
+import heroChocolate from "./assets/images/hero_chocolate_1783853146302.jpg";
 import pistachioSizeChartImg from './assets/images/pistachio_sizes_new_1785488478959.jpg';
 import hazelnutSizeChartImg from './assets/images/hazelnut_kunafa_1783853175537.jpg';
 import logoImg from './assets/images/logo_3sk_1783869391019.jpg';
