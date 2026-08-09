@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ShoppingBag, Globe, Sparkles, MoreVertical, X } from 'lucide-react';
 import { IMAGE_PATHS } from '../data';
 
 interface HeaderProps {
   activeTab: 'home' | 'gallery' | 'shop' | 'custom' | 'b2b';
   setActiveTab: (tab: 'home' | 'gallery' | 'shop' | 'custom' | 'b2b') => void;
+  onOrderNow?: () => void;
 }
 
-export default function Header({ activeTab, setActiveTab }: HeaderProps) {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+export default function Header({ activeTab, setActiveTab, onOrderNow }: HeaderProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const tabs = [
     { id: 'home', name: 'Our Story' },
@@ -85,9 +86,9 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
 
           <div className="flex items-center gap-4 relative">
             <button
-              onClick={() => setActiveTab('shop')}
+              onClick={() => { setActiveTab('shop'); if (typeof onOrderNow === 'function') onOrderNow(); }}
               id="header-shop-cta"
-              className="flex items-center gap-2 bg-gradient-to-r from-gold-600 to-gold-500 text-dark-chocolate px-4 py-2.5 rounded text-xs md:text-sm font-bold tracking-wider hover:from-gold-500 hover:to-gold-400 shadow-lg shadow-gold-950/40 hover:shadow-gold-500/20 active:scale-95 transition-all"
+              className="flex items-center gap-2 bg-gradient-to-r from-gold-600 to-gold-500 text-dark-chocolate px-4 py-2.5 rounded text-xs md:text-sm font-bold tracking-wider hover:from-gold-500"
             >
               <ShoppingBag className="w-4 h-4" />
               ORDER NOW
