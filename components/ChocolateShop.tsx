@@ -40,14 +40,33 @@ export default function ChocolateShop() {
     });
   };
 
-  const updateQty = (weight: string, flavour: 'pistachio' | 'hazelnut', delta: number) => {
+  // Unified quantity change function (works even if flavour selection changed since add)
+  const changeQty = (weight: string, delta: number) => {
     setCart(prev => {
-      const copy = prev.map(i => ({ ...i }));
-      const idx = copy.findIndex(it => it.size === weight && it.flavour === flavour);
-      if (idx === -1) return prev;
-      copy[idx].qty = Math.max(0, copy[idx].qty + delta);
-      if (copy[idx].qty === 0) copy.splice(idx, 1);
-      return copy;
+      const preferredFlavour = selectedFlavours[weight];
+      const exactIndex = prev.findIndex(item => item.size === weight && item.flavour === preferredFlavour);
+
+      if (exactIndex > -1) {
+        const copy = prev.map(i => ({ ...i }));
+        copy[exactIndex].qty = Math.max(0, copy[exactIndex].qty + delta);
+        if (copy[exactIndex].qty === 0) copy.splice(exactIndex, 1);
+        return copy;
+      }
+
+      const anyIndex = prev.findIndex(item => item.size === weight);
+      if (anyIndex > -1) {
+        const copy = prev.map(i => ({ ...i }));
+        copy[anyIndex].qty = Math.max(0, copy[anyIndex].qty + delta);
+        if (copy[anyIndex].qty === 0) copy.splice(anyIndex, 1);
+        return copy;
+      }
+
+      if (delta > 0) {
+        const sizeInfo = SIZES_DATA.find(s => s.weight === weight)!;
+        return [...prev, { size: weight, flavour: preferredFlavour, qty: delta, price: sizeInfo.priceInr }];
+      }
+
+      return prev;
     });
   };
 
@@ -111,9 +130,9 @@ export default function ChocolateShop() {
                 <button onClick={() => addToCart(size.weight)} className="flex-1 bg-gold-600 hover:bg-gold-500 text-dark-chocolate px-4 py-3 rounded font-bold">🛒 Add to Cart</button>
 
                 <div className="flex items-center gap-2 bg-dark-chocolate/60 px-3 py-2 rounded border border-gold-900/10">
-                  <button aria-label="decrease" onClick={() => updateQty(size.weight, selectedFlavours[size.weight], -1)} className="px-3 py-1 rounded border border-gold-900/10">−</button>
-                  <div className="min-w-[2rem] text-center">{cart.find(i => i.size === size.weight && i.flavour === selectedFlavours[size.weight])?.qty ?? 0}</div>
-                  <button aria-label="increase" onClick={() => updateQty(size.weight, selectedFlavours[size.weight], 1)} className="px-3 py-1 rounded border border-gold-900/10">+</button>
+                  <button aria-label="decrease" onClick={() => changeQty(size.weight, -1)} className="px-3 py-1 rounded border border-gold-900/10 pointer-events-auto">−</button>
+                  <div className="min-w-[2rem] text-center">{cart.find(i => i.size === size.weight && i.flavour === selectedFlavours[size.weight])?.qty ?? cart.find(i => i.size === size.weight)?.qty ?? 0}</div>
+                  <button aria-label="increase" onClick={() => changeQty(size.weight, 1)} className="px-3 py-1 rounded border border-gold-900/10 pointer-events-auto">+</button>
                 </div>
               </div>
 
