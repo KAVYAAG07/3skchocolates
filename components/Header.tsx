@@ -14,10 +14,24 @@ export default function Header({ activeTab, setActiveTab, onOrderNow }: HeaderPr
   const tabs = [
     { id: 'home', name: 'Our Story' },
     { id: 'gallery', name: 'Product Gallery' },
-    { id: 'shop', name: 'Order Chocolate' },
     { id: 'custom', name: 'Custom Wrapper (50+ Bars)' },
     { id: 'b2b', name: 'B2B as Corporate' },
+    { id: 'shop', name: 'ORDER NOW' }, // moved to last and labeled as requested
   ] as const;
+
+  const handleNavClick = (tabId: (typeof tabs)[number]['id']) => {
+    setActiveTab(tabId);
+    if (tabId === 'shop') {
+      // allow React to render the shop section then scroll to it
+      setTimeout(() => {
+        const el = document.getElementById('shop-section');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 60);
+      if (typeof onOrderNow === 'function') onOrderNow();
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-dark-chocolate/95 backdrop-blur-md border-b border-gold-800/20">
@@ -68,7 +82,7 @@ export default function Header({ activeTab, setActiveTab, onOrderNow }: HeaderPr
                 <button
                   key={tab.id}
                   id={`nav-tab-${tab.id}`}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => handleNavClick(tab.id)}
                   className={`relative text-xs xl:text-sm tracking-widest font-semibold uppercase transition-all duration-300 py-2 cursor-pointer select-none ${
                     isActive
                       ? 'text-gold-200 font-bold'
@@ -85,8 +99,6 @@ export default function Header({ activeTab, setActiveTab, onOrderNow }: HeaderPr
           </nav>
 
           <div className="flex items-center gap-4 relative">
-            {/* ORDER NOW removed from header by request; Order CTA now lives in the shop/cart area below */}
-
             <div className="relative lg:hidden">
               <button
                 id="menu-three-dots-btn"
@@ -115,10 +127,7 @@ export default function Header({ activeTab, setActiveTab, onOrderNow }: HeaderPr
                       <button
                         key={tab.id}
                         id={`nav-dropdown-tab-${tab.id}`}
-                        onClick={() => {
-                          setActiveTab(tab.id);
-                          setIsMenuOpen(false);
-                        }}
+                        onClick={() => { handleNavClick(tab.id); setIsMenuOpen(false); }}
                         className={`w-full text-left px-3.5 py-2.5 rounded text-xs md:text-sm tracking-wide font-medium transition-all duration-200 cursor-pointer flex items-center justify-between ${
                           isActive
                             ? 'bg-gold-950 text-gold-200 border-l-2 border-gold-400 font-semibold shadow-inner'
